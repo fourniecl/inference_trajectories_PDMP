@@ -7,18 +7,17 @@ import os
 
 ##################PARAMETERS#############
 n=100 #number of cells
-k_on_1, k_on_2, k_on_3 = 0, -4, -4
-d_M = 10    #degradation rate ARN
+k_on_1, k_on_2, k_on_3 = 5,5,5
+d_M= 10    #degradation rate ARN
 d_P = 5   #degradation rate protein
 
-pa_11, pa_22, pa_33 = 10, 0, 0   #activation parameters
-pa_12, pa_23, pa_31 = 10, 10, 0    #inhibition parameters
-parameters = [k_on_1, k_on_2, k_on_3, d_M, d_P, pa_11, pa_22, pa_33, pa_12, pa_23, pa_31]
-
+pa_11,pa_22,pa_33= 10,10,10   #activation parameters
+pa_12,pa_23,pa_31= -10, -10,-10    #inhibition parameters
+parameters=[k_on_1, k_on_2 ,k_on_3, d_M,d_P, pa_11,pa_22,pa_33,pa_12,pa_23,pa_31]
 
 G = 3   #nombre de genes 
 div=100
-tms =np.linspace(0,1.1,110)
+tms =np.linspace(0,1.5,150)
 t1=10
 CI=(0,0,0)     #initial condition
 
@@ -39,7 +38,6 @@ def main (timegap,M,n,G, parameters,CI,tms,t1,n_simu,epsilon,div):
         moy=[]
         moypdmp=[]
         for m in range(M):
-            print(M) #
             S=simu_3G(n,Network3genes(G,parameters),CI,tms)
             mu,nu,mu_n,nu_n=distribution_3G(S,t1,tmpt)
             PDMP=PDMP_ref_n_3G(mu_n,nu_n,n,n_simu,Network3genes(G,parameters),t1,tmpt,tms,np.max([np.max(mu),np.max(nu)])+0.1)
@@ -62,15 +60,16 @@ def main (timegap,M,n,G, parameters,CI,tms,t1,n_simu,epsilon,div):
         MAX.append(np.max(moy))
         MINpdmp.append(np.min(moypdmp))
         MAXpdmp.append(np.max(moypdmp))
-    with open('Results_files/Entropybytimegap_123.csv', 'w') as f:
+    with open('../visualisation/Results_files/Entropybytimegap_repressilator.csv', 'w') as f:
         writer = csv.writer(f)
-        headers = ["timegap", "MoyEntrop","stdEntrop","min","max", "MoyEntropPDMP","stdEntropPDMP","minPDMP","maxPDMP"]
+        headers = ["timegap", "MoyEntrop","stdEntrop","minEntrop","maxEntrop", "MoyEntropPDMP","stdEntropPDMP","minEntropPDMP","maxEntropPDMP"]
         writer.writerow(headers)
         for i in range (len(timegap)):
             data=[timegap[i]/div,Mentrop[i],Sentrop[i],MIN[i],MAX[i],Mentroppdmp[i],Sentroppdmp[i],MINpdmp[i],MAXpdmp[i]]
             writer.writerow(data)
 
-M=100 # 50
-timegap = np.arange(30,70,5) # np.arange(35,100,10)
+M=100
+timegap = np.arange(30,70,5)
 main(timegap,M,n,G,parameters,CI,tms,t1,n_simu,epsilon,div)                    
 
+       

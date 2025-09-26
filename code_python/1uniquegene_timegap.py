@@ -184,7 +184,7 @@ def main(n_cells,M,n_simu,t1,tms,timegap):
         minentropKK.append(np.min(moyKK))
         maxentropKK.append(np.max(moyKK))
 
-    with open('Results_files/Entropybytimegap_1GENE.csv', 'w', newline='') as f:
+    with open('../visualisation/Results_files/Entropybytimegap_1GENE.csv', 'w', newline='') as f:
         writer = csv.writer(f)
         headers = ["timegap", "MoyEntropDK", "stdEntropDK","minEntropDK","maxEntropDK",
                    "MoyEntropKK", "stdEntropKK","minEntropKK","maxEntropKK",
@@ -198,7 +198,7 @@ def main(n_cells,M,n_simu,t1,tms,timegap):
             writer.writerow(data)
 
 
-M=2      
+M=50     
 t=np.arange(20,60,10)#np.arange(150,250,50)#np.arange(150,300,50)
 main(100,M,100,10,np.linspace(0,1,100),t)
 
