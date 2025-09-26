@@ -1,1 +1,23 @@
-# inference_traj_PDMP
+# Cell Trajectories inference 
+
+This repository provides code for the [Cell Trajectory Inference based on Optimal Transport and a mechanistic stochastic gene expression model](https://arxiv.org/)
+
+To install required packages: :
+
+```{bash}
+pip install harissa scipy.stats ot
+```
+
+### To cite this work:
+
+```{bash}
+@misc{,
+    title={}, 
+    author={},
+    year={},
+    eprint={},
+    archivePrefix={},
+    primaryClass={},
+    url={}, 
+}
+```
