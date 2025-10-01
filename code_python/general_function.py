@@ -258,6 +258,8 @@ def plot_process(diff_sch,PDMP_sch,K_sch):
     im = ax3.imshow(K_sch.T, interpolation='nearest',cmap="Greens", origin='lower', vmin=0, vmax=np.max(K_sch))
     ax3.set_title(f'C.', loc='left', fontweight='bold')
     ax3.set_xlabel("index cells at $t_1$") 
+    ax3.set_ylabel("index cells at $t_2$")        
+
     #cb =fig.colorbar(im, ax=ax3,orientation='horizontal')#, anchor=(0, 0.3),boundaries=[0,np.max(K_ref)])
 
     im = ax4.imshow(np.identity(np.shape(diff_sch)[0]).T/np.shape(diff_sch)[0], interpolation='nearest',cmap="Greys", origin='lower')#, vmin=0, vmax=np.max(K_sch))
