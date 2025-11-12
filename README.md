@@ -1,6 +1,6 @@
 # Cell Trajectories inference 
 
-This repository provides code for the [Cell Trajectory Inference based on Optimal Transport and a mechanistic stochastic gene expression model](https://arxiv.org/)
+This repository provides code for the [Cell Trajectory Inference based on Schrödinger problem and a mechanistic model of stochastic gene expression](https://arxiv.org/)
 
 To install required packages: :
 
